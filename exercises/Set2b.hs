@@ -136,7 +136,11 @@ smallestDivisor n = smallestDivisor' n n []
 -- Ps. 0 and 1 are not prime numbers
 
 isPrime :: Integer -> Bool
-isPrime = todo
+isPrime' _ 0 xs = if (length xs == 2) then True else False
+isPrime' n i xs = if (mod n i == 0)
+                  then isPrime' n (i-1) (xs ++ [i])
+                  else isPrime' n (i-1) xs
+isPrime n = isPrime' n n []
 
 ------------------------------------------------------------------------------
 -- Ex 8: implement a function biggestPrimeAtMost that returns the
