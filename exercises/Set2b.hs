@@ -66,7 +66,10 @@ oddFactorial n = if (odd n)
 -- * https://en.wikipedia.org/wiki/Euclidean_algorithm
 
 myGcd :: Integer -> Integer -> Integer
-myGcd = todo
+myGcd i 0 = i
+myGcd i j = if (i < j)
+            then myGcd j i
+            else myGcd j (mod i j) 
 
 ------------------------------------------------------------------------------
 -- Ex 4: Implement the function leftpad which adds space characters
