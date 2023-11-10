@@ -123,7 +123,11 @@ countdown n = countdown' n "Ready!"
 -- Hint: remember the mod function!
 
 smallestDivisor :: Integer -> Integer
-smallestDivisor = todo
+smallestDivisor' _ 1 xs = head (sort xs)
+smallestDivisor' n i xs = if ((mod n i) == 0)
+                          then smallestDivisor' n (i-1) (xs ++ [i])
+                          else smallestDivisor' n (i-1) xs
+smallestDivisor n = smallestDivisor' n n []
 
 ------------------------------------------------------------------------------
 -- Ex 7: implement a function isPrime that checks if the given number
