@@ -143,7 +143,8 @@ safeIndex xs i = if (((length xs)-1) < i) || (i < 0) then Nothing else Just (xs 
 --   eitherDiv 4 0   ==> Left "4/0"
 
 eitherDiv :: Integer -> Integer -> Either String Integer
-eitherDiv x y = todo
+eitherDiv x 0 = Left((show x) ++ "/0")
+eitherDiv x y = Right(div x y)
 
 ------------------------------------------------------------------------------
 -- Ex 11: implement the function addEithers, which combines two values of type
