@@ -204,4 +204,11 @@ map2 f (a:as) (b:bs) = (f a b) : (map2 f as bs)
 --   ==> []
 
 maybeMap :: (a -> Maybe b) -> [a] -> [b]
-maybeMap f xs = todo
+
+nothingFilter [] = []
+nothingFilter (Nothing:xs) = nothingFilter xs
+nothingFilter (Just x : xs) = x : nothingFilter xs
+
+myMap _ [] = []
+myMap f (x:xs) = (f x) : (myMap f xs)
+maybeMap f xs = nothingFilter (myMap f xs)
