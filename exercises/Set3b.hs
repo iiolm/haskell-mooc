@@ -121,7 +121,10 @@ sorted (x:y:xs) = if x <= y then sorted (y:xs) else False
 -- Use pattern matching and recursion (and the list constructors : and [])
 
 sumsOf :: [Int] -> [Int]
-sumsOf xs = todo
+-- sumOf (y:ys) x = (x + y) : sumOf ys (x + y)
+sumsOf' [] _ = []
+sumsOf' (x:xs) b = (x + b) : sumsOf' xs (x+b)
+sumsOf xs = sumsOf' xs 0
 
 ------------------------------------------------------------------------------
 -- Ex 7: implement the function merge that merges two sorted lists of
