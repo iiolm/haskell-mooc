@@ -223,8 +223,9 @@ joinToLength i strlist = filter (\x -> length x == i) [x ++ y | x <- strlist, y 
 --   sumRights [Left "bad!", Left "missing"]         ==>  0
 
 sumRights :: [Either a Int] -> Int
-sumRights = todo
-
+sumRights [] = 0
+sumRights (Right x:xs) = x + sumRights xs
+sumRights (Left x:xs) = sumRights xs
 ------------------------------------------------------------------------------
 -- Ex 12: recall the binary function composition operation
 -- (f . g) x = f (g x). In this exercise, your task is to define a function
