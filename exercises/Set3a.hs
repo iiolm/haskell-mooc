@@ -202,7 +202,11 @@ joinToLength i strlist = filter (\x -> length x == i) [x ++ y | x <- strlist, y 
 --   [1,2,3] +|+ [4,5,6]  ==> [1,4]
 --   [] +|+ [True]        ==> [True]
 --   [] +|+ []            ==> []
-
+(+|+) :: [a] -> [a] -> [a]
+(x:xs) +|+ (y:ys) = x:y:[]
+[]     +|+ (y:ys) = y:[]
+(x:xs) +|+ []     = x:[]
+[]     +|+ []     = []
 
 ------------------------------------------------------------------------------
 -- Ex 11: remember the lectureParticipants example from Lecture 2? We
