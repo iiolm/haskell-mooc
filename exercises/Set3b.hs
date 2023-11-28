@@ -69,7 +69,9 @@ sums i = sums' [1..i]
 --   mylast 0 [1,2,3] ==> 3
 
 mylast :: a -> [a] -> a
-mylast def xs = todo
+mylast def (x:[]) = x
+mylast def (x:xs) = mylast def xs
+mylast def []     = def
 
 ------------------------------------------------------------------------------
 -- Ex 4: safe list indexing. Define a function indexDefault so that
