@@ -240,8 +240,9 @@ sumRights (Left x:xs) = sumRights xs
 --   multiCompose [(3*), (2^), (+1)] 0 ==> 6
 --   multiCompose [(+1), (2^), (3*)] 0 ==> 2
 
-multiCompose fs = todo
-
+multiCompose fs = multiCompose' (reverse fs)
+multiCompose' [] = id
+multiCompose' (x:xs) = (multiCompose' xs) . (x)
 ------------------------------------------------------------------------------
 -- Ex 13: let's consider another way to compose multiple functions. Given
 -- some function f, a list of functions gs, and some value x, define
