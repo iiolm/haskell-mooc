@@ -22,8 +22,9 @@ import Mooc.Todo
 -- values 1 and 2, respectively.
 
 one :: Int
-two :: Int
 one = 1
+
+two :: Int
 two = 2
 ------------------------------------------------------------------------------
 -- Ex 2: define the function double of type Integer->Integer. Double
@@ -37,7 +38,7 @@ double x = x * 2
 -- four.
 
 quadruple :: Integer -> Integer
-quadruple x = 4 * x
+quadruple x = double (double x)
 ------------------------------------------------------------------------------
 -- Ex 4: define the function distance. It should take four arguments of
 -- type Double: x1, y1, x2, and y2 and return the (euclidean) distance
