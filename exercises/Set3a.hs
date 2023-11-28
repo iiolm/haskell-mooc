@@ -299,4 +299,13 @@ multiApp f ls n = f (apply ls n)
 -- function, the surprise won't work. See section 3.8 in the material.
 
 interpreter :: [String] -> [String]
-interpreter commands = todo
+interpreter commands = interpreter' commands 0 0 []
+
+interpreter' [] _ _ ret = reverse ret
+interpreter' (l:ls) x y ret = case l of
+    "up"    -> interpreter' ls x (y+1) ret
+    "down"  -> interpreter' ls x (y-1) ret
+    "left"  -> interpreter' ls (x-1) y ret
+    "right" -> interpreter' ls (x+1) y ret
+    "printX"-> interpreter' ls x y ((show x):ret)
+    "printY"-> interpreter' ls x y ((show y):ret)
