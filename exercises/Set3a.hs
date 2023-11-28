@@ -120,7 +120,7 @@ capitalize str = unwords . (map capitalizeFirst) . words $ str
 --   * the function takeWhile
 
 powers :: Int -> Int -> [Int]
-powers k max = todo
+powers k max = takeWhile (\x->x<=max) . map (k^) $ [0..max]
 
 ------------------------------------------------------------------------------
 -- Ex 7: implement a functional while loop. While should be a function
